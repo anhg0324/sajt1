@@ -20,6 +20,8 @@ def sshCommand(hostname, port, username, password, command): #Funciton SSHComman
 
 if __name__=='__main__':
 
+    scope = raw_input("Please enter scope: ") #You need to enter name of the scope here
+
     #This is file where we will put output
     #ODS extension is for LibreOffice Calc
     fd = open(r'linuxOutputFile.ods','w')
@@ -33,7 +35,7 @@ if __name__=='__main__':
     # - 3. Username
     # - 4. Password
     # - 5. Command
-    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'nrcmd -N podrska -P Roo8kae2 -C cnr1 scope cpe-beograd-091-185-104-000/21 listLeases > linuxOutputFile.ods') #First command
+    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'nrcmd -N podrska -P Roo8kae2 -C cnr1 scope '+scope+' listLeases > linuxOutputFile.ods') #First command
     sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'sed -n "/relay-agent-remote-id=/{s/.*relay-agent-remote-id=//;s/\S*=.*//;p}" linuxOutputFile.ods') #Second command
 
     fd.close() # Closing file
