@@ -22,7 +22,7 @@ if __name__=='__main__':
 
     #This is file where we will put output
     #ODS extension is for LibreOffice Calc
-    fd = open(r'linuxOutputFile.ODS','w')
+    fd = open(r'linuxOutputFile.ods','w')
     old_stdout = sys.stdout
     sys.stdout = fd
 
@@ -33,7 +33,7 @@ if __name__=='__main__':
     # - 3. Username
     # - 4. Password
     # - 5. Command
-    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'nrcmd -N podrska -P Roo8kae2 -C cnr1 scope cpe-beograd-091-185-104-000/21 listLeases > linuxOutputFile.ODS') #First command
-    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'sed -n "/relay-agent-remote-id=/{s/.*relay-agent-remote-id=//;s/\S*=.*//;p}" linuxOutputFile.ODS') #Second command
+    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'nrcmd -N podrska -P Roo8kae2 -C cnr1 scope cpe-beograd-091-185-104-000/21 listLeases > linuxOutputFile.ods') #First command
+    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'sed -n "/relay-agent-remote-id=/{s/.*relay-agent-remote-id=//;s/\S*=.*//;p}" linuxOutputFile.ods') #Second command
 
     fd.close() # Closing file
