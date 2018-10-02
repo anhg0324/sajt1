@@ -1,7 +1,6 @@
-#  Namena   :
-#  Korisnik : CLI
-#  Autor(i) : Aleksandar Mitrovic
-#  Datum(i) : 2018-9-27
+#  Purpose : Backup script (show running-config)
+#  Author : Aleksandar Mitrovic
+#  Date : 2018-10-02
 
 #This script is running on Python -v2
 
@@ -9,7 +8,7 @@ import paramiko #$ pip install paramiko (paramiko module)
 import sys
 import os
 
-def sshCommand(hostname, port, username, password, command): #Funciton SSHCommand
+def sshCommand(hostname, port, username, password, command): #Funciton sshCommand
     sshClient = paramiko.SSHClient()
 
     sshClient.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -20,11 +19,12 @@ def sshCommand(hostname, port, username, password, command): #Funciton SSHComman
 
 if __name__=='__main__':
 
-    scope = raw_input("Please enter scope: ") #You need to enter name of the scope here
+    hostname = raw_input("Please enter SSH hostname: ") #You need to enter SSH hostname or IP address
+    username = raw_input("Please enter Username: ") #You need to enter Username
+    password = raw_input("Please enter Password: ") #You need to enter Password
 
     #This is file where we will put output
-    #ODS extension is for LibreOffice Calc
-    fd = open(r'linuxOutputFile.ods','w')
+    fd = open(r'outputFile.txt','w')
     old_stdout = sys.stdout
     sys.stdout = fd
 
@@ -35,9 +35,6 @@ if __name__=='__main__':
     # - 3. Username
     # - 4. Password
     # - 5. Command
-    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'nrcmd -N podrska -P Roo8kae2 -C cnr1 scope '+scope+' listLeases > linuxOutputFile.ods') #First command
-    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'sed -n "/relay-agent-remote-id=/{s/.*relay-agent-remote-id=//;s/\S*=.*//;p}" linuxOutputFile.ods') #Second command
-
-
+    sshCommand(hostname, 22, username, password, 'show  running-config') #First command
 
     fd.close()
