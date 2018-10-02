@@ -35,8 +35,8 @@ if __name__=='__main__':
     # - 3. Username
     # - 4. Password
     # - 5. Command
-    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'nrcmd -N podrska -P Roo8kae2 -C cnr1 scope '+scope+' listLeases > linuxOutputFile.ods') #First command
-    sshCommand('cnr1.vektor.net', 22, 'root', 'ili/.Wae4d', 'sed -n "/relay-agent-remote-id=/{s/.*relay-agent-remote-id=//;s/\S*=.*//;p}" linuxOutputFile.ods') #Second command
+    sshCommand('cnr1.vektor.net', 22, '***', '***', 'nrcmd -N podrska -P Roo8kae2 -C cnr1 scope '+scope+' listLeases > linuxOutputFile.ods') #First command
+    sshCommand('cnr1.vektor.net', 22, '***', '***', 'sed -n "/relay-agent-remote-id=/{s/.*relay-agent-remote-id=//;s/\S*=.*//;p}" linuxOutputFile.ods') #Second command
 
 
 
