@@ -3,7 +3,7 @@
 #  Date : 2018-10-02
 
 #This script is running on Python -v2
-
+import getpass
 import paramiko #$ pip install paramiko (paramiko module)
 import sys
 import os
@@ -21,7 +21,7 @@ if __name__=='__main__':
 
     hostname = raw_input("Please enter SSH hostname: ") #You need to enter SSH hostname or IP address
     username = raw_input("Please enter Username: ") #You need to enter Username
-    password = raw_input("Please enter Password: ") #You need to enter Password
+    password = getpass.getpass("Please enter Password: ") #You need to enter Password
 
     #This is file where we will put output
     fd = open(r'outputFile.txt','w')
@@ -36,5 +36,9 @@ if __name__=='__main__':
     # - 4. Password
     # - 5. Command
     sshCommand(hostname, 22, username, password, 'show  running-config') #First command
+    sshCommand(hostname, 22, username, password, 'show ip interface brief') #First command
+
 
     fd.close()
+
+    os.system("gedit outputFile.txt")

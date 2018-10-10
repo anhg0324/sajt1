@@ -3,7 +3,7 @@
 #  Date : 2018-10-02
 
 #This script is running on Python -v2
-
+import getpass
 import paramiko #$ pip install paramiko (paramiko module)
 import sys
 import os
@@ -20,9 +20,9 @@ def sshCommand(hostname, port, username, password, command): #Funciton SSHComman
 if __name__=='__main__':
 
 
-    hostname = raw_input("Please enter SSH hostname: ") #Hostname
-    username = raw_input("Please enter username: ") #Username
-    password = raw_input("Please enter password: ") #Password
+    hostname = 'cnr1.vektor.net' #Hostname
+    username = 'root' #Username
+    password = getpass.getpass("Please enter password: ") #Password
     scope = raw_input("Please enter scope: ") #Name of scope
 
     #This is file where we will put output
@@ -42,3 +42,5 @@ if __name__=='__main__':
     sshCommand(hostname, 22, username, password, 'sed -n "/relay-agent-remote-id=/{s/.*relay-agent-remote-id=//;s/\S*=.*//;p}" outputFile.ods') #Second command
 
     fd.close()
+
+    os.system("xdg-open outputFile.ods")
