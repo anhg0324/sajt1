@@ -1,3 +1,10 @@
+
+#  Purpose : GPON Script
+#  Author : Aleksandar Mitrovic
+#  Date : 2018-11-22
+
+#  This script is running on Python -v2
+
 import paramiko
 import time
 
