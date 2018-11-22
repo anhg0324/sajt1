@@ -41,4 +41,4 @@ if __name__=='__main__':
 
     fd.close()
 
-    os.system("gedit outputFile.txt")
+    os.system("subl outputFile.txt")
