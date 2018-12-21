@@ -21,8 +21,8 @@ hostname = raw_input("\n\nYou can type hostname or number:\n\n"
 
 if hostname == "OLT-VP-1" or hostname == "olt-vp-1" or hostname == "1":  # You can type number or hostname
     ip = "olt-vp-1.vektor.net"  # Enter FQDN or ip address
-    username = "***"  # Enter Username
-    password = "***"  # Enter Password
+    username = "noc"  # Enter Username
+    password = "ip5NaeZ*"  # Enter Password
 
     remote_conn_pre = paramiko.SSHClient()
     remote_conn_pre.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -47,8 +47,8 @@ if hostname == "OLT-VP-1" or hostname == "olt-vp-1" or hostname == "1":  # You c
 
 elif hostname == "OLT-SC-1" or hostname == "olt-sc-1" or hostname == "2":  # You can type number or hostname
     ip = "olt-sc-1.vektor.net"  # Enter FQDN or ip address
-    username = "***"  # Enter Username
-    password = "***"  # Enter Password
+    username = "noc"  # Enter Username
+    password = "ip5NaeZ*"  # Enter Password
 
     remote_conn_pre = paramiko.SSHClient()
     remote_conn_pre.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -71,8 +71,8 @@ elif hostname == "OLT-SC-1" or hostname == "olt-sc-1" or hostname == "2":  # You
 
 elif hostname == "OLT-SU-1" or hostname == "olt-su-1" or hostname == "3":  # You can type number or hostname
     ip = "olt-su-1.vektor.net"  # Enter FQDN or ip address
-    username = "***"  # Enter Username
-    password = "***"  # Enter Password
+    username = "noc"  # Enter Username
+    password = "ip5NaeZ*"  # Enter Password
 
     remote_conn_pre = paramiko.SSHClient()
     remote_conn_pre.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -110,10 +110,12 @@ noOutput = remote_conn.recv(65535)
 
 ############################################################
 
+possibleNumberOfOlt = ["0", "1", "2", "3"]  # Maximum 2 phones
+
 while True:
     NumberOfOltInterface = raw_input("Last number of OLT interface number (E.g. 1 - 16): ")
 
-    if NumberOfOltInterface > "16":  # If number higher than 16, try again
+    if NumberOfOltInterface not in possibleNumberOfOlt:  # If number higher than 16, try again
         print ("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
                "\nWrong choice. Try again. \n"
                "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"

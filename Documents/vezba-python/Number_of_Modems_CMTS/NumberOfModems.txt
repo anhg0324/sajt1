@@ -1,0 +1,12 @@
+Interface                      Cable Modem                             Description
+              Total Reg   Oper  Unreg Offline Wideband initRC initD initIO initO
+C1/0/UB       134   134   134   0     0       134      0      0     0      0       
+C1/0/U0       105   101   101   4     4       0        0      0     0      0       MILANA TEPICA
+C1/0/U1       71    70    70    1     1       1        0      0     0      0       PEJTON
+C1/0/U2       80    78    78    2     2       0        0      0     0      0       SOMBORSKA
+C1/0/U3       52    50    50    2     2       0        0      0     0      0       ZGRADA A2
+C1/0/U4       70    69    69    1     1       0        0      0     0      0       ZGRADA A6 A1 C I B1
+C1/0/U5       77    75    75    2     2       0        0      0     0      0       KOSOVSKA
+
+Total:        589   577   577   12    12      135      0      0     0      0     
+

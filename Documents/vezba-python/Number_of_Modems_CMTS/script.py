@@ -1,4 +1,4 @@
-#  Purpose : Script for CNR (Cisco network registar)
+#  Purpose : Backup script (show running-config)
 #  Author : Aleksandar Mitrovic
 #  Date : 2018-10-02
 
@@ -8,7 +8,7 @@ import paramiko #$ pip install paramiko (paramiko module)
 import sys
 import os
 
-def sshCommand(hostname, port, username, password, command): #Funciton SSHCommand
+def sshCommand(hostname, port, username, password, command): #Funciton sshCommand
     sshClient = paramiko.SSHClient()
 
     sshClient.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -19,15 +19,12 @@ def sshCommand(hostname, port, username, password, command): #Funciton SSHComman
 
 if __name__=='__main__':
 
-
-    hostname = 'cnr1.vektor.net' #Hostname
-    username = 'root' #Username
-    password = getpass.getpass("Please enter password: ") #Password
-    scope = raw_input("Please enter scope: ") #Name of scope
+    hostname = raw_input("Your device: ") #You need to enter SSH hostname or IP address
+    username = "***" #You need to enter Username
+    password = "***" #You need to enter Password
 
     #This is file where we will put output
-    #ODS extension is for LibreOffice Calc
-    fd = open(r'outputFile.ods','w')
+    fd = open(r'NumberOfModems.txt','w')
     old_stdout = sys.stdout
     sys.stdout = fd
 
@@ -38,9 +35,9 @@ if __name__=='__main__':
     # - 3. Username
     # - 4. Password
     # - 5. Command
-    sshCommand(hostname, 22, username, password, 'nrcmd -N podrska -P Roo8kae2 -C cnr1 scope '+scope+' listLeases > outputFile.ods\n'
-                                                 'sed -n "/relay-agent-remote-id=/{s/.*relay-agent-remote-id=//;s/\S*=.*//;p}" outputFile.ods\n') #First command
+    sshCommand(hostname, 22, username, password, 'show cable modem summary total') #First command
+
 
     fd.close()
 
-    os.system("xdg-open outputFile.ods")
+    os.system("subl NumberOfModems.txt")
